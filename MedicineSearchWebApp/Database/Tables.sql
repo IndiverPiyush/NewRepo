@@ -1,4 +1,6 @@
+drop database medicinesearch_ashwini
 
+use MedicineSearch_Ashwini
 USE [MedicineSearch]
 GO
 
@@ -61,7 +63,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[MEDECINE](
-	[MEDICINE_ID] [int] NOT NULL,
+	[MEDICINE_ID] [int] IDENTITY(7000,1) NOT NULL,
 	[PROVIDER_ID] [int] NOT NULL,
 	[MEDICINE_NAME] [varchar](50) NOT NULL,
 	[MEDICINE_CATEGORY] [varchar](50) NOT NULL,
