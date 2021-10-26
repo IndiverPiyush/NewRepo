@@ -52,7 +52,7 @@ namespace MedicineSearchWebApp.Controllers
                 cs.AllergicTo = collection["AllergicTo"].ToString(); ;
                 cnt.Customers.Add(cs);
                 cnt.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Create));
             }
             catch
             {
@@ -65,10 +65,12 @@ namespace MedicineSearchWebApp.Controllers
         {
             MedicineSearchContext cnt = new MedicineSearchContext();
             Customer cs = new Customer();
-            var csdet = (from i in cnt.Customers where i.UserId == 1 select i).FirstOrDefault();
+            int uid = (int)HttpContext.Session.GetInt32("userid");
+
+            var csdet = (from i in cnt.Customers where i.UserId == uid select i).FirstOrDefault();
             if (csdet != null)
             {
-                cs.UserWalletbal = cs.UserWalletbal+csdet.UserWalletbal;
+                cs.UserWalletbal = csdet.UserWalletbal;
                 
             }
             return View(cs);
@@ -83,14 +85,16 @@ namespace MedicineSearchWebApp.Controllers
             {
                 MedicineSearchContext cnt = new MedicineSearchContext();
                 Customer dt = new Customer();
-                var csdet = (from i in cnt.Customers where i.UserId == 1 select i).FirstOrDefault();
+                int uid = (int)HttpContext.Session.GetInt32("userid");
+
+                var csdet = (from i in cnt.Customers where i.UserId == uid select i).FirstOrDefault();
                 if (csdet != null)
                 {
                     csdet.UserWalletbal = csdet.UserWalletbal+int.Parse(collection["UserWalletbal"].ToString());
                     
                     cnt.SaveChanges();
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Edit));
             }
             catch
             {
