@@ -1,8 +1,111 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@model MedicineSearchWebApp.Models.Customer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Home/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<!DOCTYPE html>
+
+
+<div class="flexbox">
+    <div class="leftside">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="container">
+            <div class="screen">
+                <div class="screen__content">
+                    <form class="login" asp-action="Index">
+                        <div class="login__field">
+                            <i class="login__icon fas fa-user"></i>
+                            <input type="text" asp-for="UserMobile" class="login__input" placeholder="User name / Mobile No." />
+                           
+                        </div>
+                        <div class="login__field">
+                            <i class="login__icon fas fa-lock"></i>
+                            <input type="password" asp-for="UserPassword" class="login__input" placeholder="Password">
+                        </div>
+                        <button class="button login__submit" type="submit" value="Index" name="submit">
+                            <span class="button__text">User LogIn</span>
+                            <i class="button__icon fas fa-chevron-right"></i>
+                        </button>
+
+                        <button class="button login__submit" type="submit" value="Index1" name="submit">
+                            <span class="button__text">Member LogIn</span>
+                            <i class="button__icon fas fa-chevron-right"></i>
+                        </button>
+                    </form>
+                    <div class="social-login">
+                        <br />
+                        <div class="social-icons">
+                            <a href="#" class="social-login__icon fab fa-instagram"></a>
+                            <a href="#" class="social-login__icon fab fa-facebook"></a>
+                            <a href="#" class="social-login__icon fab fa-twitter"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="screen__background">
+                    <span class="screen__background__shape screen__background__shape4"></span>
+                    <span class="screen__background__shape screen__background__shape3"></span>
+                    <span class="screen__background__shape screen__background__shape2"></span>
+                    <span class="screen__background__shape screen__background__shape1"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="rightside">
+        <div class="mySlides fade">
+            <img src="~/img1.jpg" style="width: 800px; height: 600px; object-fit: contain;">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="~/img2.jpg" style="width: 800px; height: 600px; object-fit: contain;">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="~/img3.jpg" style="width: 800px; height: 600px; object-fit: contain;">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="~/img4.jpg" style="width: 800px; height: 600px; object-fit: contain;">
+        </div>
+
+    </div>
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
 </div>
+
+
+
+<script src="~/js/IndexScript.js">
+
+</script>
+<script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+</script>
+
