@@ -1,8 +1,9 @@
 ﻿
 @{
-    ViewData["Title"] = "VendorHomePage";
+    ViewData["Title"] = "UserPage";
     Layout = "~/Views/Home/_Layout.cshtml";
 }
+
 
 
 
@@ -26,14 +27,14 @@
         background-color: #e7e7e7;
         color: black;
         border-radius: 12px;
-    " onclick="location.href='@Url.Action("Details", "Member" )'">
+    " onclick="location.href='@Url.Action("Details", "Customer" )'">
                 View Profile
             </button>
         </div>
     </div>
     <div class="card 2">
         <div class="card_image">
-            <img src="~/ViewMedicine2.jpeg" />
+            <img src="~/MedicineSearch.png" />
         </div>
         <div class="card_title title-white">
             <button style="        border: none;
@@ -47,15 +48,15 @@
         background-color: #e7e7e7;
         color: black;
         border-radius: 12px;
-    " onclick="location.href='@Url.Action("display", "Member" )'">
-                View Medicine
+    " onclick="location.href='@Url.Action("Index", "Medecine" )'">
+                Search Medicine
             </button>
         </div>
     </div>
 
     <div class="card 3">
         <div class="card_image">
-            <img src="~/AddMedicine.png" />
+            <img src="~/PlaceMedicine.png" />
         </div>
         <div class="card_title">
             <button style="        border: none;
@@ -69,23 +70,36 @@
         background-color: #e7e7e7;
         color: black;
         border-radius: 12px;
-    " onclick="location.href='@Url.Action("AddMember", "Member" )'">
-                Add Medicine
+    " onclick="location.href='@Url.Action("Index", "Medecine" )'">
+                Place Order
             </button>
         </div>
     </div>
 
-    @*<div class="card 4">
-            <div class="card_image">
-                <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
-            </div>
-            <div class="card_title title-black">
-                <p>Card Title</p>
-            </div>
-        </div>*@
-
+    <div class="card 3">
+        <div class="card_image">
+            <img src="~/wallet.jpg" />
+        </div>
+        <div class="card_title">
+            <button style="        border: none;
+        width: 130px;
+        color: white;
+        padding: 7px 7px 7px 7px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        background-color: #e7e7e7;
+        color: black;
+        border-radius: 12px;
+    " onclick="location.href='@Url.Action("Wallet", "Member" )'">
+                Wallet Details
+            </button>
+        </div>
+    </div>
 </div>
 <br />
 <br />
 <br />
 <br />
+

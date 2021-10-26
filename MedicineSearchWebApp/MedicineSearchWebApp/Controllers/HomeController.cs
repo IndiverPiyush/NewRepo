@@ -39,11 +39,11 @@ namespace MedicineSearchWebApp.Controllers
                     var depdet = (from i in cnt.Customers select i).FirstOrDefault();
                     if (collection["UserMobile"].ToString() == depdet.UserMobile && collection["UserPassword"].ToString() == depdet.UserPassword)
                     {
-                        return RedirectToAction(nameof(Index));
+                        return RedirectToAction(nameof(UserPage));
                     }
                     else
                     {
-                        return RedirectToAction(nameof(Details));
+                        return RedirectToAction(nameof(Index));
                     }
                 case "Index1":
                     MedicineSearchContext cnt1 = new MedicineSearchContext();
@@ -64,6 +64,13 @@ namespace MedicineSearchWebApp.Controllers
 
 
         public IActionResult Details()
+        {
+            //MedicineSearchContext context = new MedicineSearchContext();
+            return View();
+
+        }
+
+        public IActionResult UserPage()
         {
             //MedicineSearchContext context = new MedicineSearchContext();
             return View();
