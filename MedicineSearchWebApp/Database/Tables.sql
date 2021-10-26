@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 drop database medicinesearch_ashwini
 
 use MedicineSearch_Ashwini
@@ -126,3 +128,4 @@ CREATE TABLE [dbo].[VENDOR](
 ) ON [PRIMARY]
 GO
 
+>>>>>>> fa4e764d496f7e0d80eab6a35f69b5b5b4878082
