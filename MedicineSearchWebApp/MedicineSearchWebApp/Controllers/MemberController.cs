@@ -133,5 +133,62 @@ namespace MedicineSearchWebApp.Controllers
                 return View();
             }
         }
+        public ActionResult Details()
+        {
+            MedicineSearchContext cnt = new MedicineSearchContext();
+            Vendor ven = new Vendor();
+            var vedet = from i in cnt.Vendors where i.VendorId == 5000 select i;
+            if (vedet != null)
+            {
+                return View(vedet.ToList());
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public ActionResult EditVendor(int id)
+        {
+            MedicineSearchContext cnt = new MedicineSearchContext();
+            Vendor ven = new Vendor();
+            var vedet = (from i in cnt.Vendors where i.VendorId == id select i).FirstOrDefault();
+            if (vedet != null)
+            {
+                ven.VendorId = vedet.VendorId;
+                ven.VendorOrgName = vedet.VendorOrgName;
+                ven.VendorArea = vedet.VendorArea;
+                ven.VendorCity = vedet.VendorCity;
+                ven.VendorMobile = vedet.VendorMobile;
+                ven.VendorWallet = vedet.VendorWallet;
+                ven.VendorSpeciality = vedet.VendorSpeciality;
+            }
+            return View(ven);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditVendor(int id, IFormCollection collection)
+        {
+            try
+            {
+                MedicineSearchContext cnt = new MedicineSearchContext();
+                var vedet = (from i in cnt.Vendors where i.VendorId == id select i).FirstOrDefault();
+                if (vedet != null)
+                {
+                    vedet.VendorId = int.Parse(collection["VendorId"].ToString());
+                    vedet.VendorOrgName = collection["VendorOrgName"].ToString();
+                    vedet.VendorArea = collection["VendorArea"].ToString();
+                    vedet.VendorCity = collection["VendorCity"].ToString();
+                    vedet.VendorMobile = collection["VendorMobile"].ToString();
+                    vedet.VendorWallet = decimal.Parse(collection["VendorWallet"].ToString());
+                    vedet.VendorSpeciality = collection["VendorSpeciality"].ToString();
+                    cnt.SaveChanges();
+                }
+                return RedirectToAction(nameof(Details));
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
