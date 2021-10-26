@@ -23,7 +23,7 @@ namespace MedicineSearchWebApp.Controllers
             {
                 MedicineSearchContext cnt = new MedicineSearchContext();
                 Medecine md = new Medecine();
-                md.ProviderId = int.Parse(collection["ProviderId"].ToString());
+                md.ProviderId = (int)HttpContext.Session.GetInt32("vendorid");
                 md.MedicineName = collection["MedicineName"].ToString();
                 md.MedicineCategory = collection["MedicineCategory"].ToString();
                 md.MedicineDosage = int.Parse(collection["MedicineDosage"].ToString());
