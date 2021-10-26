@@ -16,7 +16,7 @@ namespace MedicineSearchWebApp.Models
         public DateTime MedicineEdate { get; set; }
         public int MedicineStock { get; set; }
         public decimal MedicinePrice { get; set; }
-
         public virtual Vendor Provider { get; set; }
+        //public List<Medecine> medecinesList { get; set; }
     }
 }

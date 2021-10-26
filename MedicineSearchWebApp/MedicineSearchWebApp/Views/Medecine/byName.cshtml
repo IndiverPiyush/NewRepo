@@ -1,0 +1,46 @@
+﻿@model MedicineSearchWebApp.Models.MedecineADO
+
+@{
+    ViewData["Title"] = "byName";
+}
+
+<form name="form2">
+    <label>Search by Name: </label>
+    @Html.DropDownListFor(x => x.MedicineId, new SelectList(Model.medicineList, "MedicineId", "MedicineName"), "<-select name->")
+    <input type="button" id="btn2" value="SEARCH" />
+    <hr />
+    MEDICINE ID: <label id="l1"></label><br />
+    MEDICINE NAME: <label id="l2"></label><br /><br />
+
+        <div id="MEDS">
+
+        </div>
+
+</form>
+
+
+@section Scripts{
+    <script type="text/javascript">
+        //debugger
+        $(document).ready(function () {
+            debugger
+            $("#btn2").click(function () {
+                debugger
+                $.ajax({
+                    url: "/Medecine/medsByCategory",
+                    type: "POST",
+                    data: { d: $("#MedicineId").val()},
+                    success: function (data) {
+                        $("#MEDS").html(data);
+                    },
+                    error: function failedSearch() {
+                        $("#MEDS").html = "Failed to load";
+                    }
+                });
+                alert("Hi");
+                $("#l1").text($("#MedicineId").val());
+                $("#l2").text($("#MedicineId option:selected").text());
+            });
+        });
+    </script>
+}
