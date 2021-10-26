@@ -8,28 +8,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MedicineName)
+                @Html.ActionLink("NAME", "display", new { sort = ViewBag.NameSortParam })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MedicineCategory)
+                @Html.ActionLink("CATEGORY", "display", new { sort = ViewBag.CatSortParam })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MedicineDosage)
+                DOSAGE
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MedicineMdate)
+                @Html.ActionLink("MANUFACTURING DATE", "display", new { sort = ViewBag.MDATESortParam })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MedicineEdate)
+                @Html.ActionLink("EXPIRY DATE", "display", new { sort = ViewBag.EDATESortParam })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MedicineStock)
+                @Html.ActionLink("STOCK", "display", new { sort = ViewBag.StockSortParam })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MedicinePrice)
+                @Html.ActionLink("PRICE", "display", new { sort = ViewBag.PriceSortParam })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProviderId)
+                SUPPLIER
             </th>
             <th></th>
         </tr>
@@ -62,7 +62,7 @@
                 @Html.DisplayFor(modelItem => item.ProviderId)
             </td>
             <td>
-               <a asp-action="Edit" asp-route-id="@item.MedicineId">Edit</a> |
+               <a asp-action="Edit" asp-route-id="@item.MedicineId">Update</a> |
                 <a asp-action="Delete" asp-route-id="@item.MedicineId">Delete</a>
             </td>
         </tr>
