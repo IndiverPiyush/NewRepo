@@ -1,8 +1,15 @@
+<<<<<<< HEAD
+drop database medicinesearch_ashwini
+
+use MedicineSearch_Ashwini
+USE [MedicineSearch]
+=======
 drop table admin
 drop table MEDECINE;
 drop table Customer
 drop table VENDOR
 USE [MedicineSearch_Shiv]
+>>>>>>> 130318104eaa67f81a20191fba19eabf36786141
 GO
 
 --ADMIN
@@ -64,8 +71,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[MEDECINE](
+<<<<<<< HEAD
+	[MEDICINE_ID] [int] IDENTITY(7000,1) NOT NULL,
+=======
 
 	[MEDICINE_ID] [int] IDENTITY(7000,1) NOT NULL ,
+>>>>>>> 130318104eaa67f81a20191fba19eabf36786141
 	[PROVIDER_ID] [int] NOT NULL,
 	[MEDICINE_NAME] [varchar](50) NOT NULL,
 	[MEDICINE_CATEGORY] [varchar](50) NOT NULL,

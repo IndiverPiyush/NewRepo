@@ -30,9 +30,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.UserWalletbal)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.UserPassword)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.AllergicTo)
             </th>
@@ -60,16 +60,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.UserWalletbal)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.UserPassword)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.AllergicTo)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+                @*<a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>*@
             </td>
         </tr>
 }
