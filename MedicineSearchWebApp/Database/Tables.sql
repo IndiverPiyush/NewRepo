@@ -1,5 +1,8 @@
-
-USE [MedicineSearch]
+drop table admin
+drop table MEDECINE;
+drop table Customer
+drop table VENDOR
+USE [MedicineSearch_Shiv]
 GO
 
 --ADMIN
@@ -48,7 +51,7 @@ CREATE TABLE [dbo].[CUSTOMER](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[USER] ADD  CONSTRAINT [DF_USER_ALLERGIC_TO]  DEFAULT ('NONE') FOR [ALLERGIC_TO]
+ALTER TABLE [dbo].[Customer] ADD  CONSTRAINT [DF_USER_ALLERGIC_TO]  DEFAULT ('NONE') FOR [ALLERGIC_TO]
 GO
 
 
@@ -61,6 +64,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[MEDECINE](
+
 	[MEDICINE_ID] [int] IDENTITY(7000,1) NOT NULL ,
 	[PROVIDER_ID] [int] NOT NULL,
 	[MEDICINE_NAME] [varchar](50) NOT NULL,

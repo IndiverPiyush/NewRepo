@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MedicineSearchWebApp.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,11 @@ namespace MedicineSearchWebApp.Controllers
             return View();
         }
 
+        public ActionResult Display()
+        {
+            MedicineSearchContext context = new MedicineSearchContext();
+            return View(context.Vendors.ToList());
+        }
         // GET: AdminController/Create
         public ActionResult Create()
         {
@@ -34,7 +40,18 @@ namespace MedicineSearchWebApp.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                MedicineSearchContext msc = new MedicineSearchContext();
+                Vendor mem = new Vendor();
+                mem.VendorOrgName = collection["VendorOrgName"].ToString();
+                mem.VendorArea = collection["VendorArea"].ToString();
+                mem.VendorCity = collection["VendorCity"].ToString();
+                mem.VendorMobile = collection["VendorMobile"].ToString();
+                mem.VendorWallet = int.Parse(collection["VendorWallet"].ToString());
+                mem.VendorPassword = collection["VendorPassword"].ToString();
+                mem.VendorSpeciality = collection["VendorSpeciality"].ToString();
+                msc.Vendors.Add(mem);
+                msc.SaveChanges();
+                return RedirectToAction(nameof(Display));
             }
             catch
             {
@@ -45,7 +62,20 @@ namespace MedicineSearchWebApp.Controllers
         // GET: AdminController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            MedicineSearchContext msc = new MedicineSearchContext();
+            Vendor mem = new Vendor();
+            var vid = (from i in msc.Vendors where i.VendorId == id select i).FirstOrDefault();
+            if (vid != null)
+            {
+                mem.VendorOrgName = vid.VendorOrgName;
+                mem.VendorArea = vid.VendorArea;
+                mem.VendorCity = vid.VendorCity;
+                mem.VendorMobile = vid.VendorMobile;
+                mem.VendorWallet = vid.VendorWallet;
+                mem.VendorPassword = vid.VendorPassword;
+                mem.VendorSpeciality = vid.VendorSpeciality;
+            }
+            return View(mem);
         }
 
         // POST: AdminController/Edit/5
@@ -55,7 +85,21 @@ namespace MedicineSearchWebApp.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                MedicineSearchContext msc = new MedicineSearchContext();
+                Vendor mem = new Vendor();
+                var vid = (from i in msc.Vendors where i.VendorId == id select i).FirstOrDefault();
+                if (vid != null)
+                {
+                    mem.VendorOrgName = collection["VendorOrgName"].ToString();
+                    mem.VendorArea = collection["VendorArea"].ToString();
+                    mem.VendorCity = collection["VendorCity"].ToString();
+                    mem.VendorMobile = collection["VendorMobile"].ToString();
+                    mem.VendorWallet = int.Parse(collection["VendorWallet"].ToString());
+                    mem.VendorPassword = collection["VendorPassword"].ToString();
+                    mem.VendorSpeciality = collection["VendorSpeciality"].ToString();
+                }
+                msc.SaveChanges();
+                return RedirectToAction(nameof(Display));
             }
             catch
             {
@@ -66,7 +110,20 @@ namespace MedicineSearchWebApp.Controllers
         // GET: AdminController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            MedicineSearchContext msc = new MedicineSearchContext();
+            Vendor mem = new Vendor();
+            var vid = (from i in msc.Vendors where i.VendorId == id select i).FirstOrDefault();
+            if (vid != null)
+            {
+                mem.VendorOrgName = vid.VendorOrgName;
+                mem.VendorArea = vid.VendorArea;
+                mem.VendorCity = vid.VendorCity;
+                mem.VendorMobile = vid.VendorMobile;
+                mem.VendorWallet = vid.VendorWallet;
+                mem.VendorPassword = vid.VendorPassword;
+                mem.VendorSpeciality = vid.VendorSpeciality;
+            }
+            return View(mem);
         }
 
         // POST: AdminController/Delete/5
@@ -76,10 +133,15 @@ namespace MedicineSearchWebApp.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                MedicineSearchContext msc = new MedicineSearchContext();
+                Vendor mem = new Vendor();
+                var vid = (from i in msc.Vendors where i.VendorId == id select i).FirstOrDefault();
+                msc.Vendors.Remove(vid);
+                msc.SaveChanges();
+                return RedirectToAction(nameof(Display));
             }
             catch
-            {
+            { 
                 return View();
             }
         }
