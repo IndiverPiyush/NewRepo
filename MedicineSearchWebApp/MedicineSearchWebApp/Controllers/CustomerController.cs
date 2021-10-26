@@ -20,7 +20,21 @@ namespace MedicineSearchWebApp.Controllers
         // GET: CustomerController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            MedicineSearchContext cnt = new MedicineSearchContext();
+            Customer ct = new Customer();
+            var ctdet = (from i in cnt.Customers where i.UserId == id select i).FirstOrDefault();
+            if(ctdet != null)
+            {
+                ct.UserId = ctdet.UserId;
+                ct.UserName = ctdet.UserName;
+                ct.UserMobile = ctdet.UserMobile;
+                ct.UserEmail = ctdet.UserEmail;
+                ct.UserArea = ctdet.UserArea;
+                ct.UserCity = ctdet.UserCity;
+                ct.UserWalletbal = ctdet.UserWalletbal;
+                ct.AllergicTo = ctdet.AllergicTo;
+            }
+            return View(ct);
         }
 
         // GET: CustomerController/Create
@@ -47,7 +61,21 @@ namespace MedicineSearchWebApp.Controllers
         // GET: CustomerController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            MedicineSearchContext cnt = new MedicineSearchContext();
+            Customer ct = new Customer();
+            var ctdet = (from i in cnt.Customers where i.UserId == id select i).FirstOrDefault();
+            if (ctdet != null)
+            {
+                ct.UserId = ctdet.UserId;
+                ct.UserName = ctdet.UserName;
+                ct.UserMobile = ctdet.UserMobile;
+                ct.UserEmail = ctdet.UserEmail;
+                ct.UserArea = ctdet.UserArea;
+                ct.UserCity = ctdet.UserCity;
+                ct.UserWalletbal = ctdet.UserWalletbal;
+                ct.AllergicTo = ctdet.AllergicTo;
+            }
+            return View(ct);
         }
 
         // POST: CustomerController/Edit/5
@@ -57,6 +85,20 @@ namespace MedicineSearchWebApp.Controllers
         {
             try
             {
+                MedicineSearchContext cnt = new MedicineSearchContext();
+                var ctdet = (from i in cnt.Customers where i.UserId == id select i).FirstOrDefault();
+                if (ctdet != null)
+                {
+                    ctdet.UserId= int.Parse(collection["UserId"].ToString());
+                    ctdet.UserName = collection["UserName"].ToString();
+                    ctdet.UserMobile = collection["UserMobile"].ToString();
+                    ctdet.UserEmail = collection["UserEmail"].ToString();
+                    ctdet.UserArea = collection["UserArea"].ToString();
+                    ctdet.UserCity = collection["UserCity"].ToString();
+                    ctdet.UserWalletbal = decimal.Parse(collection["UserWalletbal"].ToString());
+                    ctdet.AllergicTo = collection["AllergicTo"].ToString();
+                    cnt.SaveChanges();
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch

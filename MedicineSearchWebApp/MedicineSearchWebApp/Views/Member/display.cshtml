@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MedicineSearchWebApp.Models.Medecine>
+
+@{
+    ViewData["Title"] = "display";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("NAME", "display", new { sort = ViewBag.NameSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("CATEGORY", "display", new { sort = ViewBag.CatSortParam })
+            </th>
+            <th>
+                DOSAGE
+            </th>
+            <th>
+                @Html.ActionLink("MANUFACTURING DATE", "display", new { sort = ViewBag.MDATESortParam })
+            </th>
+            <th>
+                @Html.ActionLink("EXPIRY DATE", "display", new { sort = ViewBag.EDATESortParam })
+            </th>
+            <th>
+                @Html.ActionLink("STOCK", "display", new { sort = ViewBag.StockSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("PRICE", "display", new { sort = ViewBag.PriceSortParam })
+            </th>
+            <th>
+                SUPPLIER
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicineCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicineDosage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicineMdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicineEdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicineStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicinePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProviderId)
+            </td>
+            <td>
+               <a asp-action="Edit" asp-route-id="@item.MedicineId">Update</a> |
+                <a asp-action="Delete" asp-route-id="@item.MedicineId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
