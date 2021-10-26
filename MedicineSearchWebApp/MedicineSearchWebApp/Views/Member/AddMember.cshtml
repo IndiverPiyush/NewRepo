@@ -1,0 +1,62 @@
+﻿@model MedicineSearchWebApp.Models.Medecine
+
+@{
+    ViewData["Title"] = "AddMember";
+}
+
+<h1>AddMember</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddMember">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProviderId" class="control-label">Provider Id</label>
+                <input asp-for="ProviderId" class="form-control" />
+                <span asp-validation-for="ProviderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedicineName" class="control-label">Medicine Name</label>
+                <input asp-for="MedicineName" class="form-control" />
+                <span asp-validation-for="MedicineName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedicineCategory" class="control-label">Category</label>
+                <input asp-for="MedicineCategory" class="form-control" />
+                <span asp-validation-for="MedicineCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedicineDosage" class="control-label">Dosage</label>
+                <input asp-for="MedicineDosage" class="form-control" />
+                <span asp-validation-for="MedicineDosage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedicineMdate" class="control-label">Manufacturing Date</label>
+                <input asp-for="MedicineMdate" class="form-control" />
+                <span asp-validation-for="MedicineMdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedicineEdate" class="control-label">Expiry Date</label>
+                <input asp-for="MedicineEdate" class="form-control" />
+                <span asp-validation-for="MedicineEdate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MedicineStock" class="control-label">Stock</label>
+                <input asp-for="MedicineStock" class="form-control" />
+                <span asp-validation-for="MedicineStock" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MedicinePrice" class="control-label">Price</label>
+                <input asp-for="MedicinePrice" class="form-control" />
+                <span asp-validation-for="MedicinePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
