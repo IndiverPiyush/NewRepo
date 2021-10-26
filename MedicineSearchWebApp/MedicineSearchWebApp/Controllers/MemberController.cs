@@ -41,19 +41,58 @@ namespace MedicineSearchWebApp.Controllers
             }
         }
 
-        public ActionResult display()
+        public ActionResult display(string sort)
         {
             MedicineSearchContext cnt = new MedicineSearchContext();
             Medecine md = new Medecine();
-            var medicine = from i in cnt.Medecines where i.ProviderId == 5002 select i;
-            if (medicine != null)
+            ViewBag.CatSortParam = string.IsNullOrEmpty(sort) ? "CATEGORY" : "";
+            ViewBag.NameSortParam = sort == "NAME" ? "DESN" : "NAME";
+            ViewBag.MDATESortParam = sort == "MANUFACTURING DATE" ? "DESCM" : "MANUFACTURING DATE";
+            ViewBag.EDATESortParam = sort == "EXPIRY DATE" ? "DESCE" : "EXPIRY DATE";
+            ViewBag.StockSortParam = sort == "STOCK" ? "DESCS" : "STOCK";
+            ViewBag.PriceSortParam = sort == "PRICE" ? "DESCP" : "PRICE";
+
+            var med = from i in cnt.Medecines where i.ProviderId == 5002 select i;
+            switch (sort)
             {
-                return View(medicine.ToList());
+                case "NAME":
+                    med = med.OrderBy(i => i.MedicineName);
+                    break;
+                case "DESCN":
+                    med = med.OrderByDescending(i => i.MedicineName);
+                    break;
+                case "CATEGORY":
+                    med = med.OrderByDescending(i => i.MedicineCategory);
+                    break;
+                case "MANUFACTURING DATE":
+                    med = med.OrderBy(i => i.MedicineMdate);
+                    break;
+                case "DESCM":
+                    med = med.OrderByDescending(i => i.MedicineMdate);
+                    break;
+                case "EXPIRY DATE":
+                    med = med.OrderBy(i => i.MedicineEdate);
+                    break;
+                case "DESCE":
+                    med = med.OrderByDescending(i => i.MedicineEdate);
+                    break;
+                case "STOCK":
+                    med = med.OrderBy(i => i.MedicineStock);
+                    break;
+                case "DESCS":
+                    med = med.OrderByDescending(i => i.MedicineStock);
+                    break;
+                case "PRICE":
+                    med = med.OrderBy(i => i.MedicinePrice);
+                    break;
+                case "DESCP":
+                    med = med.OrderByDescending(i => i.MedicinePrice);
+                    break;
+                default:
+                    med = med.OrderBy(i => i.MedicineCategory);
+                    break;
             }
-            else
-            {
-                return View();
-            }
+            return View(med.ToList());
         }
         public ActionResult Edit(int id)
         {

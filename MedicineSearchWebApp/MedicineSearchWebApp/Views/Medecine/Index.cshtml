@@ -1,0 +1,101 @@
+﻿
+@model IEnumerable<MedicineSearchWebApp.Models.Medecine>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .nameSearch{
+        position : relative;
+    }
+    .categorySearch {
+        position: relative;
+    }
+</style>
+<h1>Medicines</h1>
+<br />
+
+
+<p class="nameSearch">
+    <a asp-action="byName">Search By Name</a>
+</p>
+<p class="categorySearch">
+    <a asp-action="byCategory">Search By Category</a>
+</p>
+
+<br />
+<div id="MEDS">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Medicine Name
+                </th>
+                <th>
+                    @Html.ActionLink("CATEGORY", "Index", new { sort = ViewBag.CatSortParam })
+                </th>
+                <th>
+                    Dosage
+                </th>
+                <th>
+                    @Html.ActionLink("MANUFACTURING DATE", "Index", new { sort = ViewBag.MDATESortParam })
+                </th>
+                <th>
+                    @Html.ActionLink("EXPIRY DATE", "Index", new { sort = ViewBag.EDATESortParam })
+                </th>
+                <th>
+                    @Html.ActionLink("STOCK", "Index", new { sort = ViewBag.StockSortParam })
+                </th>
+                <th>
+                    @Html.ActionLink("PRICE", "Index", new { sort = ViewBag.PriceSortParam })
+                </th>
+                <th>
+                    Supplier
+                </th>
+
+                @*<th></th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MedicineName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MedicineCategory)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MedicineDosage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MedicineMdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MedicineEdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MedicineStock)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MedicinePrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProviderId)
+                    </td>
+
+                    <td>
+                        @*
+                                <a asp-action="Edit" asp-route-id="@item.MedicineId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.MedicineId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.MedicineId">Delete</a>
+                            </td>*@
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
