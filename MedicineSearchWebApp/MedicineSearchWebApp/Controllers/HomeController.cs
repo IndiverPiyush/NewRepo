@@ -35,10 +35,13 @@ namespace MedicineSearchWebApp.Controllers
             switch (submit) {
                 case "Index":
                     MedicineSearchContext cnt = new MedicineSearchContext();
+                    string user = collection["UserMobile"].ToString();
                     Customer dt = new Customer();
-                    var depdet = (from i in cnt.Customers select i).FirstOrDefault();
-                    if (collection["UserMobile"].ToString() == depdet.UserMobile && collection["UserPassword"].ToString() == depdet.UserPassword)
+                    var depdet = (from i in cnt.Customers where i.UserMobile == user select i).FirstOrDefault();
+                    if (user == depdet.UserMobile && collection["UserPassword"].ToString() == depdet.UserPassword)
                     {
+                        int uid = depdet.UserId;
+                        HttpContext.Session.SetInt32("userid", uid);
                         return RedirectToAction(nameof(UserPage));
                     }
                     else
@@ -47,10 +50,13 @@ namespace MedicineSearchWebApp.Controllers
                     }
                 case "Index1":
                     MedicineSearchContext cnt1 = new MedicineSearchContext();
+                    string user1 = collection["UserMobile"].ToString();
                     Vendor vt = new Vendor();
-                    var vdepdet = (from i in cnt1.Vendors select i).FirstOrDefault();
-                    if (collection["UserMobile"].ToString() == vdepdet.VendorMobile && collection["UserPassword"].ToString() == vdepdet.VendorPassword)
+                    var vdepdet = (from i in cnt1.Vendors where i.VendorMobile == user1 select i).FirstOrDefault();
+                    if (user1 == vdepdet.VendorMobile && collection["UserPassword"].ToString() == vdepdet.VendorPassword)
                     {
+                        int vid = vdepdet.VendorId;
+                        HttpContext.Session.SetInt32("vendorid", vid);
                         return RedirectToAction(nameof(VendorHomePage));
                     }
                     else

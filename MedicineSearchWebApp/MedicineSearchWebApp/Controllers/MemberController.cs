@@ -52,7 +52,8 @@ namespace MedicineSearchWebApp.Controllers
             ViewBag.StockSortParam = sort == "STOCK" ? "DESCS" : "STOCK";
             ViewBag.PriceSortParam = sort == "PRICE" ? "DESCP" : "PRICE";
 
-            var med = from i in cnt.Medecines where i.ProviderId == 5002 select i;
+            int vendorid = (int) HttpContext.Session.GetInt32("vendorid");
+            var med = from i in cnt.Medecines where i.ProviderId == vendorid select i;
             switch (sort)
             {
                 case "NAME":
@@ -176,7 +177,9 @@ namespace MedicineSearchWebApp.Controllers
         {
             MedicineSearchContext cnt = new MedicineSearchContext();
             Vendor ven = new Vendor();
-            var vedet = from i in cnt.Vendors where i.VendorId == 5000 select i;
+
+            int vendorid = (int)HttpContext.Session.GetInt32("vendorid");
+            var vedet = from i in cnt.Vendors where i.VendorId == vendorid select i;
             if (vedet != null)
             {
                 return View(vedet.ToList());
