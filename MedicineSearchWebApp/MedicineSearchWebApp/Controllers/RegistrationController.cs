@@ -61,18 +61,35 @@ namespace MedicineSearchWebApp.Controllers
         }
 
         // GET: RegistrationController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(/*int id*/)
         {
-            return View();
+            MedicineSearchContext cnt = new MedicineSearchContext();
+            Customer cs = new Customer();
+            var csdet = (from i in cnt.Customers where i.UserId == 1 select i).FirstOrDefault();
+            if (csdet != null)
+            {
+                cs.UserWalletbal = cs.UserWalletbal+csdet.UserWalletbal;
+                
+            }
+            return View(cs);
         }
 
         // POST: RegistrationController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(/*int id,*/ IFormCollection collection)
         {
             try
             {
+                MedicineSearchContext cnt = new MedicineSearchContext();
+                Customer dt = new Customer();
+                var csdet = (from i in cnt.Customers where i.UserId == 1 select i).FirstOrDefault();
+                if (csdet != null)
+                {
+                    csdet.UserWalletbal = csdet.UserWalletbal+int.Parse(collection["UserWalletbal"].ToString());
+                    
+                    cnt.SaveChanges();
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
