@@ -27,7 +27,7 @@
             $("#btn2").click(function () {
                 debugger
                 $.ajax({
-                    url: "/Medecine/medsByCategory",
+                    url: "/Medecine/medsByName",
                     type: "POST",
                     data: { d: $("#MedicineId").val()},
                     success: function (data) {

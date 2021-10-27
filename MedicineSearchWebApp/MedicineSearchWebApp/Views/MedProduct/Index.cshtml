@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <h3>Products List</h3>
+    <table cellpadding="2" cellspacing="2" border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Buy</th>
+        </tr>
+        @foreach (var product in ViewBag.products)
+        {
+            <tr>
+                <td>@product.MedicineId</td>
+                <td>@product.MedicineName</td>
+                <td>@product.MedicinePrice</td>
+                <td align="center">
+                    <a asp-controller="Cart" asp-action="buy" asp-route-id="@product.MedicineId">Buy Now</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>
