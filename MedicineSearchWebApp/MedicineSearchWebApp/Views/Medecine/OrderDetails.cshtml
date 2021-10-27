@@ -2,16 +2,60 @@
 @{
     ViewData["Title"] = "OrderDetails";
 }
-
-<h1>OrderDetails</h1>
-
-<label>@TempData["orderNo"]</label>
-<label>@TempData["customerId"]</label>
-<label>@TempData["mid"]</label>
-<label>@TempData["mname"]</label>
-<label>@TempData["vendorId"]</label>
-<label>@TempData["qty"]</label>
-<label>@TempData["total"]</label>
-<label>@TempData["time"]</label>
+<br />
+<br />
+<h1>Order Details</h1>
+<br />
+<br />
+<table>
+    <tr>
+        <td style="font-weight:bolder">Order No. :</td>
+        <td>
+            <label>@TempData["orderNo"]</label>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-weight:bold">Cutomer ID :</td>
+        <td>
+            <label>@TempData["customerId"]</label>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-weight:bold">Customer Name : </td>
+        <td>
+            <label>@TempData["customername"]</label>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-weight:bold">Medicine Name : </td>
+        <td>
+            <label>@TempData["mname"]</label>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-weight:bold">Vendor Id :</td>
+        <td>
+            <label>@TempData["vendorId"]</label>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-weight:bold">Quantity :</td>
+        <td>
+            <label>@TempData["qty"]</label>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-weight:bold">Total amount :</td>
+        <td>
+            <label>@TempData["total"]</label>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-weight:bold">Time :</td>
+        <td>
+            <label>@TempData["time"]</label>
+        </td>
+    </tr>
+</table>
 
 
