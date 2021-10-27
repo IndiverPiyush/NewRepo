@@ -91,9 +91,10 @@ namespace MedicineSearchWebApp.Controllers
             double p;
             string name;
             int v;
+            TempData["UserName"] = HttpContext.Session.GetString("username"); 
             TempData["MedicineId"] = a;
             HttpContext.Session.SetInt32("MID", a);
-            SqlConnection connection = new SqlConnection("Data Source=AZ-MV-SQLSERVER;Initial Catalog=MedicineSearch;Integrated Security=True");
+            SqlConnection connection = new SqlConnection("Data Source=AZ-MV-SQLSERVER;Initial Catalog=MedicineSearch_Sakshi;Integrated Security=True");
             connection.Open();
             SqlCommand cmd = new SqlCommand("select * from medecine where MEDICINE_ID =" + id, connection);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -123,9 +124,9 @@ namespace MedicineSearchWebApp.Controllers
             double p = (double)HttpContext.Session.GetInt32("price");
             string mname = HttpContext.Session.GetString("name");
             int mid = (int)HttpContext.Session.GetInt32("MID");
-            string customerName = "Atishay";
-            int customerId = 8;
-            int wallet = 10000;
+            string customerName = HttpContext.Session.GetString("username");
+            int customerId = (int)HttpContext.Session.GetInt32("userid");
+            int wallet = (int) HttpContext.Session.GetInt32("userwallet");
             int orderNo;
             DateTime time = System.DateTime.Now;
             double total = 0;
@@ -138,7 +139,7 @@ namespace MedicineSearchWebApp.Controllers
             }
             else
             {
-                SqlConnection connection = new SqlConnection("Data Source=AZ-MV-SQLSERVER;Initial Catalog=MedicineSearch;Integrated Security=True");
+                SqlConnection connection = new SqlConnection("Data Source=AZ-MV-SQLSERVER;Initial Catalog=MedicineSearch_Sakshi;Integrated Security=True");
                 connection.Open();
                 SqlCommand cmd = new SqlCommand("INSERT INTO ORDER_HISTORY VALUES(@cid, @cname, @mid, @mname, @vid, @qty, @total, @time)", connection);
                 cmd.Parameters.AddWithValue("@cid",customerId);
@@ -162,8 +163,7 @@ namespace MedicineSearchWebApp.Controllers
                     TempData["orderNo"] = orderNo;
                     customerId = int.Parse(dr["CUSTOMER_ID"].ToString());
                     TempData["customerId"] = customerId;
-                    mid = int.Parse(dr["MEDICINE_ID"].ToString());
-                    TempData["mid"] = mid;
+                    TempData["customername"] = HttpContext.Session.GetString("username");
                     mname = dr["MEDICINE_NAME"].ToString();
                     TempData["mname"] = mname;
                     vendorId = int.Parse(dr["VENDOR_ID"].ToString());
