@@ -2,13 +2,11 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "~/Views/Home/_AfterLoginLayout.cshtml";
 }
 
-<h1>Details</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -27,45 +25,27 @@
             <th>
                 @Html.DisplayNameFor(model => model.VendorWallet)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.VendorPassword)
-            </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.VendorSpeciality)
+                @Html.DisplayNameFor(model => model.VendorPassword)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorOrgName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorArea)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorMobile)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorWallet)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.VendorPassword)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorSpeciality)
-            </td>
-            <td>
-                <a asp-action="EditVendor" asp-route-id="@item.VendorId">Edit</a> |
-                @*<a asp-action="Details" asp-route-id="@item.VendorId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.VendorId">Delete</a>*@
-            </td>
-        </tr>
-}
-    </tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td data-column="Organisation Name">@Html.DisplayFor(modelItem => item.VendorOrgName)</td>
+                <td data-column="Area">@Html.DisplayFor(modelItem => item.VendorArea)</td>
+                <td data-column="City">@Html.DisplayFor(modelItem => item.VendorCity)</td>
+                <td data-column="Mobile No.">@Html.DisplayFor(modelItem => item.VendorMobile)</td>
+                <td data-column="Wallet Balance">@Html.DisplayFor(modelItem => item.VendorWallet)</td>
+                <td data-column="Password">@Html.DisplayFor(modelItem => item.VendorPassword)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VendorId">Edit</a> 
+                </td>
+            </tr>
+           
+            }
+        </tbody>
 </table>

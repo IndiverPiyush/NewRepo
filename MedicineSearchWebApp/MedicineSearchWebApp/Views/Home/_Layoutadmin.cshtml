@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/css/ProfileCard.css" rel="stylesheet" />
+    <link href="~/css/adminstyle.css" rel="stylesheet" />
+    <link href="~/css/IndexStyle.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <section class="navigation">
+        <div class="nav-container">
+            <div class="brand">
+                <a href="#!">Medicine Search App</a>
+            </div>
+            <nav>
+                <div class="nav-mobile"><a id="navbar-toggle" href="#!"><span></span></a></div>
+                <ul class="nav-list">
+                    <li>
+                        <a href="#!">Home</a>
+                    </li>
+                    <li>
+                        <a href="#!">About</a>
+                    </li>
+                    <li>
+                        <a href="#!">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+<footer id="contact">
+    <ul>
+        <div id="icon-container">
+            <a href="#">
+                <div id="icon">
+                    <li><i class="fab fa-twitter"></i></li>
+                </div>
+            </a>
+            <a href="#">
+                <div id="icon">
+                    <li><i class="fab fa-instagram"></i></li>
+                </div>
+            </a>
+            <a href="#">
+                <div id="icon">
+                    <li><i class="fab fa-facebook-f"></i></li>
+                </div>
+            </a>
+            <a href="#">
+                <div id="icon">
+                    <li><i class="far fa-envelope"></i></li>
+                </div>
+            </a>
+            <a href="#">
+                <div id="icon">
+                    <li><i class="fab fa-free-code-camp"></i></li>
+                </div>
+        </div></a>
+    </ul>
+    <p>&copy 2020-2021, *Your Brand*</p>
+</footer>
+</html>

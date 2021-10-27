@@ -1,58 +1,40 @@
 ﻿@model MedicineSearchWebApp.Models.Medecine
 
 @{
-    ViewData["Title"] = "AddMember";
+    ViewData["Title"] = "display";
+    Layout = "~/Views/Home/_AfterLoginLayout.cshtml";
 }
 
-<h1>AddMember</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AddMember">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
-            <div class="form-group">
-                <label asp-for="MedicineName" class="control-label">Medicine Name</label>
-                <input asp-for="MedicineName" class="form-control" />
-                <span asp-validation-for="MedicineName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MedicineCategory" class="control-label">Category</label>
-                <input asp-for="MedicineCategory" class="form-control" />
-                <span asp-validation-for="MedicineCategory" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MedicineDosage" class="control-label">Dosage</label>
-                <input asp-for="MedicineDosage" class="form-control" />
-                <span asp-validation-for="MedicineDosage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MedicineMdate" class="control-label">Manufacturing Date</label>
-                <input asp-for="MedicineMdate" class="form-control" />
-                <span asp-validation-for="MedicineMdate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MedicineEdate" class="control-label">Expiry Date</label>
-                <input asp-for="MedicineEdate" class="form-control" />
-                <span asp-validation-for="MedicineEdate" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="MedicineStock" class="control-label">Stock</label>
-                <input asp-for="MedicineStock" class="form-control" />
-                <span asp-validation-for="MedicineStock" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="MedicinePrice" class="control-label">Price</label>
-                <input asp-for="MedicinePrice" class="form-control" />
-                <span asp-validation-for="MedicinePrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<br/><br /><br /><br />
+<div id="conteudo" style="font-weight: bold;">
+    <form id="formulario" asp-action="AddMember" style="font-weight: bold;">
+        <h1>Add Member</h1>
+        <div class="row">
+            <input autocomplete="email" type="text" id="email" placeholder="Medicine Name" required asp-for="MedicineName" class="form-control" style="font-weight: bold;"/>
+        </div>
+        <div class="row">
+            <input autocomplete="" type="text" id="endereco" placeholder="Category" required asp-for="MedicineCategory" class="form-control" style="font-weight: bold;"/>
+        </div>
+        <div class="row">
+            <input autocomplete=" " type="text" id="cpf" placeholder="Dosage" asp-for="MedicineDosage" class="form-control" style="font-weight: bold;"/>
+        </div>
+        <div class="row">
+            <input autocomplete="" type="date" id="nascimento" placeholder="" style="color: var(--cor3); font-weight: bold;" required asp-for="MedicineMdate" class="form-control" />
+        </div>
+        <div class="row">
+            <input autocomplete="" type="date" id="nascimento" placeholder="" style="color: var(--cor3); font-weight: bold;" required asp-for="MedicineEdate" class="form-control" />
+        </div>
+        <div class="row">
+            <input autocomplete="tel" type="tel" id="telefone" placeholder="Stock" required asp-for="MedicineStock" class="form-control" style="font-weight: bold;"/>
+        </div>
+        <div class="row">
+            <input autocomplete="username" type="text" id="login_username" placeholder="Price" required asp-for="MedicinePrice" class="form-control" style="font-weight: bold;"/>
+        </div>
+        <button>
+            <input type="submit" value="Save" class="btn btn-primary" style="font-weight: bold;"/>
+        </button>
+    </form>
 </div>
+<script src="https://kit.fontawesome.com/d639a0fa5e.js" crossorigin="anonymous"></script>
+
 

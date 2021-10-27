@@ -22,7 +22,7 @@ namespace MedicineSearchWebApp.Controllers
         {
             MedicineSearchContext cnt = new MedicineSearchContext();
             Customer ct = new Customer();
-            var ctdet = (from i in cnt.Customers where i.UserId == id select i).FirstOrDefault();
+            var ctdet = (from i in cnt.Customers where i.UserId == 1 select i).FirstOrDefault();
             if(ctdet != null)
             {
                 ct.UserId = ctdet.UserId;
