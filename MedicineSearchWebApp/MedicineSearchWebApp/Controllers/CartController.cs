@@ -35,7 +35,7 @@ namespace MedicineSearchWebApp.Controllers
             else
             {
                 List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-                int index = isExist(i);
+                int index = isExist(id);
                 if (index != -1)
                 {
                     cart[index].Quantity++;
@@ -50,8 +50,9 @@ namespace MedicineSearchWebApp.Controllers
         }
 
         [Route("remove/{id}")]
-        public IActionResult Remove(string id)
+        public IActionResult Remove(int id)
         {
+            //int id = int.Parse(i);
             List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
             int index = isExist(id);
             cart.RemoveAt(index);
@@ -59,8 +60,9 @@ namespace MedicineSearchWebApp.Controllers
             return RedirectToAction("Index");
         }
 
-        private int isExist(string id)
+        private int isExist(int id)
         {
+            //int id = int.Parse(a);
             List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
             for (int i = 0; i < cart.Count; i++)
             {

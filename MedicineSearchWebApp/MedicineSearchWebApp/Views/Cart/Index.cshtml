@@ -1,5 +1,6 @@
-﻿@{
-    Layout = null;
+﻿
+@{
+    ViewData["Title"] = "Index";
 }
 
 <!DOCTYPE html>
@@ -24,12 +25,12 @@
         @foreach (var item in ViewBag.cart)
         {
             <tr>
-                <td><a asp-controller="Cart" asp-action="remove" asp-route-id="@item.Product.Id">Remove</a></td>
-                <td>@item.Product.MedicineId</td>
-                <td>@item.Product.MedicineName</td>
-                <td>@item.Product.MedicinePrice</td>
+                <td><a asp-controller="Cart" asp-action="remove" asp-route-id="@item.MedecineA.MedicineId">Remove</a></td>
+                <td>@item.MedecineA.MedicineId</td>
+                <td>@item.MedecineA.MedicineName</td>
+                <td>@item.MedecineA.MedicinePrice</td>
                 <td>@item.Quantity</td>
-                <td>@(item.Product.MedicinePrice * item.Quantity)</td>
+                <td>@(item.MedecineA.MedicinePrice * item.Quantity)</td>
             </tr>
         }
         <tr>
@@ -40,7 +41,7 @@
         </tr>
     </table>
     <br>
-    <a asp-controller="product" asp-action="index">Continue Shopping</a>
+    <a asp-controller="MedProduct" asp-action="Index">Continue Shopping</a>
 
 </body>
 </html>
