@@ -45,7 +45,7 @@ namespace MedicineSearchWebApp
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            //app.UseSession();
             app.UseRouting();
             app.UseSession();
 

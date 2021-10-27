@@ -1,0 +1,26 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Order";
+}
+
+<h1>Place Order</h1>
+<br />
+<hr />
+
+
+<label>Customer Name: Atishay</label>
+<br />
+<label>Medicine Name: @TempData["MedicineName"] </label>
+<br />
+<label>Medicine No: @TempData["MedicineId"]</label>
+<br />
+<label>Price: @TempData["MedicinePrice"] </label>
+<br />
+
+@using (Html.BeginForm("Order", "Medecine"))
+{
+    <label>Quantity: </label>
+    <br />
+    <input type="text" name="qtyText" />
+    <input type="submit" name="placeOrdetBtn" value="Order Now" />
+}

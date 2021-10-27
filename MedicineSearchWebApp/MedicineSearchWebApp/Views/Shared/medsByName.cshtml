@@ -1,30 +1,30 @@
 ﻿@model IList<MedicineSearchWebApp.Models.MedecineADO>
 <div id="MEDS">
     <table class="table">
-        <thead>
+        <thead >
             <tr>
-                <th>
+                <th style="background-color : black">
                     Medicine Name
                 </th>
-                <th>
+                <th style="background-color : black">
                     @Html.ActionLink("CATEGORY", "Index", new { sort = ViewBag.CatSortParam })
                 </th>
-                <th>
+                <th style="background-color : black">
                     Dosage
                 </th>
-                <th>
+                <th style="background-color : black">
                     @Html.ActionLink("MANUFACTURING DATE", "Index", new { sort = ViewBag.MDATESortParam })
                 </th>
-                <th>
+                <th style="background-color : black">
                     @Html.ActionLink("EXPIRY DATE", "Index", new { sort = ViewBag.EDATESortParam })
                 </th>
-                <th>
+                <th style="background-color : black">
                     @Html.ActionLink("STOCK", "Index", new { sort = ViewBag.StockSortParam })
                 </th>
-                <th>
+                <th style="background-color : black">
                     @Html.ActionLink("PRICE", "Index", new { sort = ViewBag.PriceSortParam })
                 </th>
-                <th>
+                <th style="background-color : black">
                     Supplier
                 </th>
             </tr>
@@ -57,8 +57,6 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.ProviderId)
                     </td>
-
-                    <td>
                 </tr>
             }
         </tbody>

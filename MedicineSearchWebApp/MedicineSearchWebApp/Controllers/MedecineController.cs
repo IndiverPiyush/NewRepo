@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MedicineSearchWebApp.Models;
+using System.Data.SqlClient;
 
 namespace MedicineSearchWebApp.Controllers
 {
@@ -82,6 +83,104 @@ namespace MedicineSearchWebApp.Controllers
             MedecineADO meds = new MedecineADO();
             List<MedecineADO> m = meds.getAllMedicineByCategory(category);
             return PartialView(m);
+        }
+        public IActionResult Order(Medecine med, int id)
+        {
+            //int i = med.MedicineId;
+            int a = id;
+            double p;
+            string name;
+            int v;
+            TempData["MedicineId"] = a;
+            HttpContext.Session.SetInt32("MID", a);
+            SqlConnection connection = new SqlConnection("Data Source=AZ-MV-SQLSERVER;Initial Catalog=MedicineSearch;Integrated Security=True");
+            connection.Open();
+            SqlCommand cmd = new SqlCommand("select * from medecine where MEDICINE_ID =" + id, connection);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+                name = dr["MEDICINE_NAME"].ToString();
+                TempData["MedicineName"] = name;
+                HttpContext.Session.SetString("name", name);
+                v = int.Parse(dr["PROVIDER_ID"].ToString());
+                HttpContext.Session.SetInt32("VID", v);
+                p = (double)double.Parse(dr["MEDICINE_PRICE"].ToString());
+                TempData["MedicinePrice"] = p;
+                HttpContext.Session.SetInt32("price", (int)p);
+
+            }
+            connection.Close();
+            
+            
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Order(IFormCollection collection)
+        {
+            int qty = int.Parse(collection["qtyText"].ToString());
+            int vendorId = (int)HttpContext.Session.GetInt32("VID");
+            double p = (double)HttpContext.Session.GetInt32("price");
+            string mname = HttpContext.Session.GetString("name");
+            int mid = (int)HttpContext.Session.GetInt32("MID");
+            string customerName = "Atishay";
+            int customerId = 8;
+            int wallet = 10000;
+            int orderNo;
+            DateTime time = System.DateTime.Now;
+            double total = 0;
+            total = qty * p;
+
+            if (total > wallet)
+            {
+                TempData["Error"] = "Wallet Balance is low";
+                return View();
+            }
+            else
+            {
+                SqlConnection connection = new SqlConnection("Data Source=AZ-MV-SQLSERVER;Initial Catalog=MedicineSearch;Integrated Security=True");
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO ORDER_HISTORY VALUES(@cid, @cname, @mid, @mname, @vid, @qty, @total, @time)", connection);
+                cmd.Parameters.AddWithValue("@cid",customerId);
+                cmd.Parameters.AddWithValue("@cname", customerName);
+                cmd.Parameters.AddWithValue("@mid", mid);
+                cmd.Parameters.AddWithValue("@mname", mname);
+                cmd.Parameters.AddWithValue("@vid", vendorId);
+                cmd.Parameters.AddWithValue("@qty", qty);
+                cmd.Parameters.AddWithValue("@total", total);
+                cmd.Parameters.AddWithValue("@time", time);
+                cmd.ExecuteNonQuery();
+                SqlCommand updateCusWallet = new SqlCommand("update CUSTOMER set USER_WALLETBAL = USER_WALLETBAL - " + total + " WHERE USER_ID = " + customerId, connection);
+                updateCusWallet.ExecuteNonQuery();
+                SqlCommand updateVendorWallet = new SqlCommand("update VENDOR set VENDOR_WALLET = VENDOR_WALLET + " + total + " WHERE VENDOR_ID = " + vendorId, connection);
+                updateVendorWallet.ExecuteNonQuery();
+                SqlCommand lastOrder = new SqlCommand("select top 1 * from order_history order by order_no desc", connection);
+                SqlDataReader dr = lastOrder.ExecuteReader();
+                while (dr.Read())
+                {
+                    orderNo = int.Parse(dr["ORDER_NO"].ToString());
+                    TempData["orderNo"] = orderNo;
+                    customerId = int.Parse(dr["CUSTOMER_ID"].ToString());
+                    TempData["customerId"] = customerId;
+                    mid = int.Parse(dr["MEDICINE_ID"].ToString());
+                    TempData["mid"] = mid;
+                    mname = dr["MEDICINE_NAME"].ToString();
+                    TempData["mname"] = mname;
+                    vendorId = int.Parse(dr["VENDOR_ID"].ToString());
+                    TempData["vendorId"] = vendorId;
+                    qty = int.Parse(dr["MEDICINE_QUANTITY"].ToString());
+                    TempData["qty"] = qty;
+                    total = int.Parse(dr["ORDER_AMOUNT"].ToString());
+                    TempData["total"] = total;
+                    time = DateTime.Parse(dr["DATE_TIME"].ToString());
+                    TempData["time"] = time;
+                }
+                return View("OrderDetails");
+            }
+        }
+        public IActionResult OrderDetails()
+        {
+            return View();
         }
 
         // GET: MedecineController/Details/5
