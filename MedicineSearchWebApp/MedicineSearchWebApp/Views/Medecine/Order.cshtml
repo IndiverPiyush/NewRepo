@@ -1,11 +1,14 @@
 ﻿@model string
 @{
     ViewData["Title"] = "Order";
+    Layout = "~/Views/Home/_HeadFoot.cshtml";
 }
 
+<br />
 <h1>Place Order</h1>
 <br />
 <hr />
+<br /><br />
 
 
 <label>Customer Name: @TempData["UserName"]</label>
@@ -20,7 +23,6 @@
 @using (Html.BeginForm("Order", "Medecine"))
 {
     <label>Quantity: </label>
-    <br />
     <input type="text" name="qtyText" />
     <input type="submit" name="placeOrdetBtn" value="Order Now" />
 }
