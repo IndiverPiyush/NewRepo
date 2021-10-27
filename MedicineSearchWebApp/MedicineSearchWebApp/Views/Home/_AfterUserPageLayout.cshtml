@@ -20,13 +20,13 @@
     <section class="navigation">
         <div class="nav-container">
             <div class="brand">
-                <a href="@Url.Action("VendorHomePage", "Home" )">Medicine Search App</a>
+                <a href="@Url.Action("UserPage", "Home" )">Medicine Search App</a>
             </div>
             <nav>
                 <div class="nav-mobile"><a id="navbar-toggle" href="#!"><span></span></a></div>
                 <ul class="nav-list">
                     <li>
-                        <a href="@Url.Action("VendorHomePage", "Home" )">Home</a>
+                        <a href="@Url.Action("UserPage", "Home" )">Home</a>
                     </li>
                     <li>
                         <a href="#!">About</a>
@@ -78,8 +78,8 @@
     <p>&copy 2020-2021, Medicine Search</p>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
 @await RenderSectionAsync("Styles", required: false)
 </html>

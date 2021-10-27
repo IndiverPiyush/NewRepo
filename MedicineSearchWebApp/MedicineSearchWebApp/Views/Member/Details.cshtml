@@ -10,25 +10,25 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th style="background-color : black">
                 @Html.DisplayNameFor(model => model.VendorOrgName)
             </th>
-            <th>
+            <th style="background-color : black">
                 @Html.DisplayNameFor(model => model.VendorArea)
             </th>
-            <th>
+            <th style="background-color : black">
                 @Html.DisplayNameFor(model => model.VendorCity)
             </th>
-            <th>
+            <th style="background-color : black">
                 @Html.DisplayNameFor(model => model.VendorMobile)
             </th>
-            <th>
+            <th style="background-color : black">
                 @Html.DisplayNameFor(model => model.VendorWallet)
             </th>
-            <th>
+            <th style="background-color : black">
                 @Html.DisplayNameFor(model => model.VendorPassword)
             </th>
-            <th></th>
+            <th style="background-color : black"></th>
         </tr>
     </thead>
     <tbody>
@@ -42,7 +42,7 @@
                 <td data-column="Wallet Balance">@Html.DisplayFor(modelItem => item.VendorWallet)</td>
                 <td data-column="Password">@Html.DisplayFor(modelItem => item.VendorPassword)</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.VendorId">Edit</a> 
+                    <a asp-action="EditVendor" asp-route-id="@item.VendorId">Edit</a> 
                 </td>
             </tr>
            
