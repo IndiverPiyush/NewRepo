@@ -52,7 +52,8 @@ namespace MedicineSearchWebApp.Controllers
                 cs.AllergicTo = collection["AllergicTo"].ToString(); ;
                 cnt.Customers.Add(cs);
                 cnt.SaveChanges();
-                return RedirectToAction(nameof(Create));
+                //Response.Redirect("/Home/Index");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {

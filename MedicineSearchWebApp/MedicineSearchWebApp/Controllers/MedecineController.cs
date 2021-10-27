@@ -94,7 +94,7 @@ namespace MedicineSearchWebApp.Controllers
             TempData["UserName"] = HttpContext.Session.GetString("username"); 
             TempData["MedicineId"] = a;
             HttpContext.Session.SetInt32("MID", a);
-            SqlConnection connection = new SqlConnection("Data Source=AZ-MV-SQLSERVER;Initial Catalog=MedicineSearch_Sakshi;Integrated Security=True");
+            SqlConnection connection = new SqlConnection("Data Source=AZ-MV-SQLSERVER;Initial Catalog=MedicineSearch;Integrated Security=True");
             connection.Open();
             SqlCommand cmd = new SqlCommand("select * from medecine where MEDICINE_ID =" + id, connection);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -139,7 +139,7 @@ namespace MedicineSearchWebApp.Controllers
             }
             else
             {
-                SqlConnection connection = new SqlConnection("Data Source=AZ-MV-SQLSERVER;Initial Catalog=MedicineSearch_Sakshi;Integrated Security=True");
+                SqlConnection connection = new SqlConnection("Data Source=AZ-MV-SQLSERVER;Initial Catalog=MedicineSearch;Integrated Security=True");
                 connection.Open();
                 SqlCommand cmd = new SqlCommand("INSERT INTO ORDER_HISTORY VALUES(@cid, @cname, @mid, @mname, @vid, @qty, @total, @time)", connection);
                 cmd.Parameters.AddWithValue("@cid",customerId);

@@ -17,13 +17,13 @@
     <section class="navigation">
         <div class="nav-container">
             <div class="brand">
-                <a href="#!">Medicine Search App</a>
+                <a href="@Url.Action("AdminHomePage", "Admin" )">Medicine Search App</a>
             </div>
             <nav>
                 <div class="nav-mobile"><a id="navbar-toggle" href="#!"><span></span></a></div>
                 <ul class="nav-list">
                     <li>
-                        <a href="#!">Home</a>
+                        <a href="@Url.Action("AdminHomePage", "Admin" )">Home</a>
                     </li>
                     <li>
                         <a href="#!">About</a>
@@ -33,7 +33,7 @@
                         <a href="#!">Contact</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Create", "Registration" )">Registration</a>
+                        <a href="@Url.Action("AdminLogin", "Admin" )">Logout</a>
                     </li>
                 </ul>
             </nav>
@@ -72,6 +72,6 @@
                 </div>
         </div></a>
     </ul>
-    <p>&copy 2020-2021, *Your Brand*</p>
+    <p>&copy 2020-2021, Medicine Search</p>
 </footer>
 </html>
