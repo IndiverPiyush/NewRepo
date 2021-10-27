@@ -9,10 +9,10 @@
     <label>Search by Name: </label>
     @Html.DropDownListFor(x => x.MedicineId, new SelectList(Model.medicineList, "MedicineId", "MedicineName"), "<-select name->")
     <input type="button" id="AKbtn2" value="SEARCH" />
-    <hr />
+    <hr />@*
     MEDICINE ID: <label id="l1"></label><br />
     MEDICINE NAME: <label id="l2"></label><br /><br />
-
+*@
         <div id="MEDS">
 
         </div>
@@ -34,10 +34,10 @@
                     error: function failedSearch() {
                         $("#MEDS").html = "Failed to load";
                     }
-                });
+                });@*
                 alert("Hi");
                 $("#l1").text($("#MedicineId").val());
-                $("#l2").text($("#MedicineId option:selected").text());
+                $("#l2").text($("#MedicineId option:selected").text());*@
             });
         });
     </script>

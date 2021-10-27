@@ -7,11 +7,12 @@
 
 <form name="form2">
     <label>Search by Category: </label>
-    @Html.DropDownListFor(x => x.MedicineCategory, new SelectList(Model.medicineList,"MedicineId","MedicineCategory"), "<-select name->")
+    @Html.DropDownListFor(x => x.MedicineCategory, new SelectList(Model.medicineList, "MedicineId", "MedicineCategory"), "<-select category->")
     <input type="button" id="btn2" value="SEARCH" />
-    <hr />
-    MEDICINE ID: <label id="l1"></label><br />
-    MEDICINE CATEGORY: <label id="l2"></label><br /><br />
+    <hr />@*
+        MEDICINE ID: <label id="l1"></label><br />
+        MEDICINE CATEGORY: <label id="l2"></label><br /><br />*@
+    
     <div id="MEDS">
 
     </div>
@@ -33,10 +34,10 @@
                     error: function failedSearch() {
                         $("#MEDS").html = "Failed to load";
                     }
-                });
+                });@*
                 alert("Hi");
                 $("#l1").text($("#MedicineCategory").val());
-                $("#l2").text($("#MedicineCategory option:selected").text());
+                $("#l2").text($("#MedicineCategory option:selected").text());*@
             });
         });
     </script>

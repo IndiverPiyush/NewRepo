@@ -18,11 +18,12 @@ namespace MedicineSearchWebApp.Controllers
         }
 
         // GET: CustomerController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details()
         {
             MedicineSearchContext cnt = new MedicineSearchContext();
             Customer ct = new Customer();
-            var ctdet = (from i in cnt.Customers where i.UserId == 1 select i).FirstOrDefault();
+            int uid = (int)HttpContext.Session.GetInt32("userid");
+            var ctdet = (from i in cnt.Customers where i.UserId == uid select i).FirstOrDefault();
             if(ctdet != null)
             {
                 ct.UserId = ctdet.UserId;
@@ -99,7 +100,7 @@ namespace MedicineSearchWebApp.Controllers
                     ctdet.AllergicTo = collection["AllergicTo"].ToString();
                     cnt.SaveChanges();
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details));
             }
             catch
             {
