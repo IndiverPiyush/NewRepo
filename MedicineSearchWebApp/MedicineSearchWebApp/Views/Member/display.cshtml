@@ -2,8 +2,8 @@
 
 @{
     ViewData["Title"] = "display";
+    Layout = "~/Views/Home/_AfterLoginLayout.cshtml";
 }
-
 <table class="table">
     <thead>
         <tr>
@@ -35,37 +35,38 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MedicineName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MedicineCategory)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MedicineDosage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MedicineMdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MedicineEdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MedicineStock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MedicinePrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProviderId)
-            </td>
-            <td>
-               <a asp-action="Edit" asp-route-id="@item.MedicineId">Update</a> |
-                <a asp-action="Delete" asp-route-id="@item.MedicineId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td data-column="Name">
+                    @Html.DisplayFor(modelItem => item.MedicineName)
+                </td>
+                <td data-column="Category">
+                    @Html.DisplayFor(modelItem => item.MedicineCategory)
+                </td>
+                <td data-column="Dosage">
+                    @Html.DisplayFor(modelItem => item.MedicineDosage)
+                </td>
+                <td data-column="Manufacture Date">
+                    @Html.DisplayFor(modelItem => item.MedicineMdate)
+                </td>
+                <td data-column="Expiry Date">
+                    @Html.DisplayFor(modelItem => item.MedicineEdate)
+                </td>
+                <td data-column="Stock">
+                    @Html.DisplayFor(modelItem => item.MedicineStock)
+                </td>
+                <td data-column="Price">
+                    @Html.DisplayFor(modelItem => item.MedicinePrice)
+                </td>
+                <td data-column="Provider ID">
+                    @Html.DisplayFor(modelItem => item.ProviderId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.MedicineId">Update</a> |
+                    <a asp-action="Delete" asp-route-id="@item.MedicineId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

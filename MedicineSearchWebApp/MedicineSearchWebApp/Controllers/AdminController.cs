@@ -22,6 +22,38 @@ namespace MedicineSearchWebApp.Controllers
             return View();
         }
 
+
+        public IActionResult Index()
+        {
+            //MedicineSearchContext context = new MedicineSearchContext();
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult Index(IFormCollection collection)
+        {
+            
+                    MedicineSearchContext cnt = new MedicineSearchContext();
+            if (collection["AdminUser"] == "Admin" && collection["AdminPassword"].ToString() == "Admin")
+            {
+                return RedirectToAction(nameof(AdminHomePage));
+            }
+            else
+            {
+                return RedirectToAction(nameof(AdminHomePage));
+            }
+            
+               
+
+        }
+
+        public IActionResult AdminHomePage()
+        {
+            //MedicineSearchContext context = new MedicineSearchContext();
+            return View();
+
+        }
         public ActionResult Display()
         {
             MedicineSearchContext context = new MedicineSearchContext();

@@ -1,0 +1,344 @@
+﻿/*IMPORTANDO FONTES COM GOOGLEFONTS*/
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=WindSong:wght@500&display=swap');
+
+* {
+    margin: 5px;
+}
+/*DECLARANDO ATRIBUTOS PADRÕES(FONTES E CORES*/
+:root {
+    --font2: 'WindSong', cursive;
+    --font1: 'Bodoni Moda', serif;
+    --cor1: #0E5CAD;
+    --cor2: rgba(219, 214, 214,0.6);
+    --cor3: black;
+    --cor4: rgba(50, 113, 179, 0.2);
+}
+
+/*DECLARANDO PROPRIEDADES DA PAGINA*/
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: var(--font1);
+    background-color: var(--cor2);
+}
+
+
+/*DECLARANDO PROPRIEDADES DO CABEÇALHO*/
+.cabecalho {
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font2);
+    font-size: x-large;
+    background-color: var(--cor1);
+    padding: 0.8rem;
+    padding-bottom: 0px;
+}
+
+
+
+/*DECLARANDO PROPRIEDADES HOME*/
+.foto-home {
+    height: 22vh;
+    width: 40vw;
+    margin: 2vh auto;
+    background: url(imagens/imagem_marlon.png) center no-repeat;
+    background-size: contain;
+}
+
+.texto-home {
+    display: block;
+    height: 22vh;
+    text-align: center;
+    font-size: x-large;
+    overflow: hidden;
+}
+
+/*BOXES-HOME*/
+.box-solido {
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 5vh;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 14px;
+    box-shadow: 3px 3px 3px;
+    padding: 2px;
+    padding-bottom: 10px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.texto-box {
+    font-size: large;
+    width: fit-content;
+    margin: auto;
+    border-radius: 14px;
+    padding: 0 4px;
+    background: linear-gradient(to left, var(--cor1), var(--cor4));
+}
+
+/*DECLARANDO PROPRIEDADES MEUS-PROJETOS*/
+.meus-projetos-area {
+    height: 48vh;
+    display: flex;
+    overflow-y: hidden;
+    border-radius: 4px;
+    align-items: center;
+}
+
+.projetos {
+    width: 100%;
+    height: 100%;
+    margin-top: 5vh;
+    font-size: large;
+}
+
+    .projetos img, .projetos p {
+        height: 20%;
+        margin: auto;
+        font-size: larger;
+    }
+
+/*DECLARANDO PROPRIEDADES MEUS-HOBIES*/
+.meus-hobies {
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 5vh;
+}
+
+.meus-hobies-area {
+    height: 36vh;
+    display: flex;
+    overflow-y: hidden;
+    align-items: center;
+    padding: 2vh 0px;
+    align-items: center;
+}
+
+.hobies {
+    height: 90%;
+    box-sizing: border-box;
+    background-color: var(--cor4);
+    border-radius: 14px;
+    margin-left: 12vw;
+    padding: 0 25vw;
+}
+
+/*DECLARANDO PROPRIEDADES LPA*/
+.lpa-area {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 2vh;
+}
+
+.lp {
+    width: 40vw;
+    height: 50vw;
+    box-sizing: border-box;
+    background: rgba(215, 215, 215,0.8);
+    border-radius: 14px;
+    display: flex;
+    margin-top: 2vh;
+}
+
+    .lp div {
+        align-items: center;
+        margin: auto;
+    }
+
+        .lp div img {
+            width: 80%;
+            margin: auto;
+        }
+
+/*DECLARANDO PROPRIEDADES MINHAS REDES*/
+.minhas-redes {
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 5vh;
+}
+
+.minhas-redes-area {
+    height: 36vh;
+    display: flex;
+    overflow-y: hidden;
+    align-items: center;
+}
+
+.rede {
+    height: 50%;
+    background: rgba(215, 215, 215,0.8);
+    box-sizing: border-box;
+    border-radius: 14px;
+    margin-left: 25vw;
+    padding: 5vw 5vw;
+}
+
+    .rede img {
+        height: 100%;
+    }
+
+    .rede:last-child {
+        margin-right: 25vw;
+    }
+
+
+/*DECLARANDO PROPRIEDADES DO FORMULARIO*/
+#formulario {
+    width: 100%;
+    color: var(--cor3);
+    background-color: var(--cor2);
+    margin: 0.8rem auto;
+    text-align: center;
+    font-size: large;
+}
+
+
+/*DECLARANDO PROPRIEDADES DOS TITULOS*/
+h1 {
+    margin: 0px;
+}
+
+
+/*DECLARANDO PROPRIEDADES DO LOGO NO FORMULARIO*/
+.logo-formulario {
+    display: flex;
+    width: 35%;
+    margin: auto;
+    margin-top: 0.5rem;
+}
+
+
+/*DECLARANDO PROPRIEDADES DAS LINHAS*/
+.row {
+    color: var(--cor3);
+    background-color: var(--cor4);
+    width: 80%;
+    margin: 1rem auto;
+    font-size: x-large;
+    border-radius: 4px;
+    height: fit-content;
+}
+
+
+/*DECLARANDO PROPRIEDADES DOS INPUTS*/
+input {
+    width: 80%;
+    height: 2.5rem;
+    border: none;
+    background-color: var(--cor4);
+    box-sizing: border-box;
+}
+
+
+/*DECLARANDO PROPRIEDADES DOS INPUTS*/
+.row input::placeholder {
+    font-size: small;
+    color: var(--cor3);
+}
+
+
+/*DECLARANDO PROPRIEDADES DOS INPUTS TIPOS BOTÕES*/
+button, .botao {
+    width: 60%;
+    background-color: var(--cor1);
+    color: var(--cor3);
+    border-radius: 4px;
+    border: none;
+    font-size: large;
+    cursor: pointer;
+    font-family: var(--font1);
+}
+
+
+/*DECLARANDO PROPRIEDADES DOS LINKS*/
+a {
+    color: var(--cor3);
+}
+
+
+/*DECLARANDO PROPRIEDADES DO BOX LOGAR COM REDES*/
+.fagmin {
+    width: 80%;
+    font-size: large;
+    margin: 1.5rem auto;
+    background-color: rgba(127, 141, 148, 0.5);
+    border-radius: 4px;
+}
+    /*DECLARANDO PROPRIEDADES DO TEXTO DENTRO BOX LOGAR COM REDES*/
+    .fagmin > p {
+        margin: 0px;
+    }
+        /*DECLARANDO PROPRIEDADES DO TEXTO ACIMA DA MARGEM DO BOX LOGAR COM REDES*/
+        .fagmin > p:first-child {
+            margin: auto;
+            margin-top: -1rem;
+            background-color: var(--cor2);
+            width: 20%;
+            border-radius: 4px;
+        }
+/*DECLARANDO PROPRIEDADES DA CAIXA DE ICONES DENTRO BOX LOGAR COM REDES*/
+.icons-redes {
+    margin-bottom: 0.2rem;
+    color: var(--cor2);
+}
+/*DECLARANDO PROPRIEDADES DO RODAPÉ*/
+footer {
+    justify-content: space-between;
+    background-color: var(--cor4);
+    display: flex;
+    padding: 0 2%;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+/*DECLARANDO PROPRIEDADES DOS ICONES DENTRO BOX LOGAR COM REDES*/
+.icons-redes > span {
+    box-sizing: border-box;
+    padding: 0.6rem;
+    padding-bottom: 0px;
+    text-align: center;
+    font-size: x-large;
+}
+    /*DECLARANDO PROPRIEDADES DO HOVER NOS ICONES DENTRO BOX LOGAR COM REDES*/
+    .icons-redes > span:hover {
+        cursor: pointer;
+        color: var(--cor1);
+    }
+
+
+/*DECLARANDO PROPRIEDADES PARA TELAS MAIORES QUE 820PX*/
+@media(min-width:820px) {
+    .logo-formulario {
+        margin: auto;
+    }
+
+    #conteudo {
+        margin: auto;
+        display: flex;
+        max-width: 1200px;
+    }
+
+
+    #formulario {
+        width: 40%;
+    }
+
+    .cabecalho {
+        justify-content: space-evenly;
+    }
+
+    footer {
+        justify-content: space-evenly;
+    }
+
+        footer a {
+            font-size: x-large;
+        }
+}

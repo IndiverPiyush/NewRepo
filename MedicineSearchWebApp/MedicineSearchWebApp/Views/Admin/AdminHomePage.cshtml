@@ -1,0 +1,75 @@
+﻿@*@{
+        ViewData["Title"] = "AdminHomePage";
+        Layout = "~/Views/Home/_Layoutadmin.cshtml";
+    }*@
+
+
+@{
+    ViewData["Title"] = "UserPage";
+    Layout = "~/Views/Home/_afterAdmin.cshtml";
+}
+
+
+@*@{
+    ViewData["Title"] = "UserPage";
+    Layout = "~/Views/Home/_Layout.cshtml";
+}*@
+
+
+
+
+<br />
+<br />
+<br />
+<br />
+<div class="cards-list">
+
+    <div class="card 1">
+        <div class="card_image"> <img src="~/addMember.jpg" /> </div>
+        <div class="card_title title-white">
+            <button style="        border: none;
+        color: white;
+        width: 100px;
+        padding: 7px 7px 7px 7px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        background-color: #e7e7e7;
+        color: black;
+        font-weight: bold;
+        border-radius: 12px;
+    " onclick="location.href='@Url.Action("Display", "Admin" )'">
+                View Member
+            </button>
+        </div>
+    </div>
+    <div class="card 2">
+        <div class="card_image">
+            <img src="~/viewMemberAdmin.png" />
+        </div>
+        <div class="card_title title-white">
+            <button style="        border: none;
+        width: 130px;
+        color: white;
+        padding: 7px 7px 7px 7px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #e7e7e7;
+        color: black;
+        border-radius: 12px;
+    " onclick="location.href='@Url.Action("Create", "Admin" )'">
+                Add Member
+            </button>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+
+

@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Home/_AfterLoginLayout.cshtml";
 }
 
 <style>
@@ -14,17 +15,15 @@
     }
 </style>
 <h1>Medicines</h1>
-<br />
 
-
-<p class="nameSearch">
-    <a asp-action="byName">Search By Name</a>
-</p>
-<p class="categorySearch">
-    <a asp-action="byCategory">Search By Category</a>
-</p>
-
-<br />
+<div>
+    <p class="nameSearch" style="display: inline-block;">
+        <a asp-action="byName">Search By Name</a>
+    </p>
+    <p class="categorySearch" style="display: inline-block;">
+        <a asp-action="byCategory">Search By Category</a>
+    </p>
+</div>
 <div id="MEDS">
     <table class="table">
         <thead>

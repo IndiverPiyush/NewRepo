@@ -2,67 +2,67 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "~/Views/Home/_AfterLoginLayout.cshtml";
 }
 
-<h1>Create</h1>
+<br />
 
-<h4>Vendor</h4>
+<h2>Create Vendor</h2>
+<br />
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="VendorId" class="control-label"></label>
-                <input asp-for="VendorId" class="form-control" />
-                <span asp-validation-for="VendorId" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="VendorOrgName" class="control-label"></label>
-                <input asp-for="VendorOrgName" class="form-control" />
-                <span asp-validation-for="VendorOrgName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VendorArea" class="control-label"></label>
-                <input asp-for="VendorArea" class="form-control" />
-                <span asp-validation-for="VendorArea" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VendorCity" class="control-label"></label>
-                <input asp-for="VendorCity" class="form-control" />
-                <span asp-validation-for="VendorCity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VendorMobile" class="control-label"></label>
-                <input asp-for="VendorMobile" class="form-control" />
-                <span asp-validation-for="VendorMobile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VendorWallet" class="control-label"></label>
-                <input asp-for="VendorWallet" class="form-control" />
-                <span asp-validation-for="VendorWallet" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VendorPassword" class="control-label"></label>
-                <input type= "password" asp-for="VendorPassword" class="form-control" />
-                <span asp-validation-for="VendorPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VendorSpeciality" class="control-label"></label>
-                <input asp-for="VendorSpeciality" class="form-control" />
-                <span asp-validation-for="VendorSpeciality" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="col-md-3"></div>
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*<div class="form-group">
+                        <label asp-for="VendorId" class="control-label"></label>
+                        <input asp-for="VendorId" class="form-control" />
+                        <span asp-validation-for="VendorId" class="text-danger"></span>
+                    </div>*@
+                <div class="form-group">
+                    <label asp-for="VendorOrgName" class="control-label"></label>
+                    <input asp-for="VendorOrgName" class="form-control" />
+                    <span asp-validation-for="VendorOrgName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VendorArea" class="control-label"></label>
+                    <input asp-for="VendorArea" class="form-control" />
+                    <span asp-validation-for="VendorArea" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VendorCity" class="control-label"></label>
+                    <input asp-for="VendorCity" class="form-control" />
+                    <span asp-validation-for="VendorCity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VendorMobile" class="control-label"></label>
+                    <input asp-for="VendorMobile" class="form-control" />
+                    <span asp-validation-for="VendorMobile" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VendorWallet" class="control-label"></label>
+                    <input asp-for="VendorWallet" class="form-control" />
+                    <span asp-validation-for="VendorWallet" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VendorPassword" class="control-label"></label>
+                    <input type="password" asp-for="VendorPassword" class="form-control" />
+                    <span asp-validation-for="VendorPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VendorSpeciality" class="control-label"></label>
+                    <input asp-for="VendorSpeciality" class="form-control" />
+                    <span asp-validation-for="VendorSpeciality" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    &nbsp; &nbsp; &nbsp; &nbsp;<input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    <div class="col-md-5"></div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
