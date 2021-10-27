@@ -90,7 +90,7 @@ namespace MedicineSearchWebApp.Controllers
                 var csdet = (from i in cnt.Customers where i.UserId == uid select i).FirstOrDefault();
                 if (csdet != null)
                 {
-                    csdet.UserWalletbal = csdet.UserWalletbal+int.Parse(collection["UserWalletbal"].ToString());
+                    csdet.UserWalletbal = csdet.UserWalletbal+decimal.Parse(collection["UserWalletbal"].ToString());
                     
                     cnt.SaveChanges();
                 }

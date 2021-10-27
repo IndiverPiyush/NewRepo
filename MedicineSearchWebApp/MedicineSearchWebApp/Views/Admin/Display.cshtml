@@ -2,13 +2,11 @@
 
 @{
     ViewData["Title"] = "Display";
+    Layout = "~/Views/Home/_afterAdmin.cshtml";
 }
 
-<h1>Display</h1>
+<h1>Member Details</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -37,35 +35,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorOrgName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorArea)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorMobile)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorWallet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorPassword)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendorSpeciality)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.VendorId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.VendorId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.VendorId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td data-column="Organisation Name">
+                    @Html.DisplayFor(modelItem => item.VendorOrgName)
+                </td>
+                <td data-column="Vendor Area">
+                    @Html.DisplayFor(modelItem => item.VendorArea)
+                </td>
+                <td data-column="Vendor City">
+                    @Html.DisplayFor(modelItem => item.VendorCity)
+                </td>
+                <td data-column="Vendor Mobile">
+                    @Html.DisplayFor(modelItem => item.VendorMobile)
+                </td>
+                <td data-column="Vendor Wallet">
+                    @Html.DisplayFor(modelItem => item.VendorWallet)
+                </td>
+                <td data-column="Vendor Password">
+                    @Html.DisplayFor(modelItem => item.VendorPassword)
+                </td>
+                <td data-column="Vendor Speciality">
+                    @Html.DisplayFor(modelItem => item.VendorSpeciality)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.VendorId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+

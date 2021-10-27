@@ -2,29 +2,33 @@
 
 @{
     ViewData["Title"] = "Edit";
+    Layout = "~/Views/Home/_HeadFoot.cshtml";
 }
-
+<br/><br />
 <h1>Wallet Updation</h1>
-
+<br /><br />
 
 <hr />
 <div class="row">
+    <div class="col-md-4"></div>
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UserId" />
-           
+
             <div class="form-group">
                 <label asp-for="UserWalletbal" class="control-label"></label>
                 <input asp-for="UserWalletbal" class="form-control" />
                 <span asp-validation-for="UserWalletbal" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <input type="submit" value="Update Wallet" class="btn btn-primary" />
             </div>
         </form>
     </div>
+
+    <div class="col-md-4"></div>
 </div>
 
 
