@@ -23,7 +23,7 @@ namespace MedicineSearchWebApp.Controllers
             {
                 MedicineSearchContext cnt = new MedicineSearchContext();
                 Medecine md = new Medecine();
-                md.ProviderId = int.Parse(collection["ProviderId"].ToString());
+                md.ProviderId = (int)HttpContext.Session.GetInt32("vendorid");
                 md.MedicineName = collection["MedicineName"].ToString();
                 md.MedicineCategory = collection["MedicineCategory"].ToString();
                 md.MedicineDosage = int.Parse(collection["MedicineDosage"].ToString());
@@ -52,7 +52,8 @@ namespace MedicineSearchWebApp.Controllers
             ViewBag.StockSortParam = sort == "STOCK" ? "DESCS" : "STOCK";
             ViewBag.PriceSortParam = sort == "PRICE" ? "DESCP" : "PRICE";
 
-            var med = from i in cnt.Medecines where i.ProviderId == 5002 select i;
+            int vendorid = (int) HttpContext.Session.GetInt32("vendorid");
+            var med = from i in cnt.Medecines where i.ProviderId == vendorid select i;
             switch (sort)
             {
                 case "NAME":
@@ -166,6 +167,65 @@ namespace MedicineSearchWebApp.Controllers
                 cnt.Medecines.Remove(md);
                 cnt.SaveChanges();
                 return RedirectToAction(nameof(display));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult Details()
+        {
+            MedicineSearchContext cnt = new MedicineSearchContext();
+            Vendor ven = new Vendor();
+
+            int vendorid = (int)HttpContext.Session.GetInt32("vendorid");
+            var vedet = from i in cnt.Vendors where i.VendorId == vendorid select i;
+            if (vedet != null)
+            {
+                return View(vedet.ToList());
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public ActionResult EditVendor(int id)
+        {
+            MedicineSearchContext cnt = new MedicineSearchContext();
+            Vendor ven = new Vendor();
+            var vedet = (from i in cnt.Vendors where i.VendorId == id select i).FirstOrDefault();
+            if (vedet != null)
+            {
+                ven.VendorId = vedet.VendorId;
+                ven.VendorOrgName = vedet.VendorOrgName;
+                ven.VendorArea = vedet.VendorArea;
+                ven.VendorCity = vedet.VendorCity;
+                ven.VendorMobile = vedet.VendorMobile;
+                ven.VendorWallet = vedet.VendorWallet;
+                ven.VendorSpeciality = vedet.VendorSpeciality;
+            }
+            return View(ven);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditVendor(int id, IFormCollection collection)
+        {
+            try
+            {
+                MedicineSearchContext cnt = new MedicineSearchContext();
+                var vedet = (from i in cnt.Vendors where i.VendorId == id select i).FirstOrDefault();
+                if (vedet != null)
+                {
+                    vedet.VendorId = int.Parse(collection["VendorId"].ToString());
+                    vedet.VendorOrgName = collection["VendorOrgName"].ToString();
+                    vedet.VendorArea = collection["VendorArea"].ToString();
+                    vedet.VendorCity = collection["VendorCity"].ToString();
+                    vedet.VendorMobile = collection["VendorMobile"].ToString();
+                    vedet.VendorWallet = decimal.Parse(collection["VendorWallet"].ToString());
+                    vedet.VendorSpeciality = collection["VendorSpeciality"].ToString();
+                    cnt.SaveChanges();
+                }
+                return RedirectToAction(nameof(Details));
             }
             catch
             {

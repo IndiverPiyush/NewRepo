@@ -24,6 +24,10 @@ namespace MedicineSearchWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +47,7 @@ namespace MedicineSearchWebApp
             app.UseStaticFiles();
             //app.UseSession();
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
