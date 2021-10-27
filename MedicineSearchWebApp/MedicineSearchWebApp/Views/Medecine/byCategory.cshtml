@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "byCategory";
+    Layout = "~/Views/Home/_AfterLoginLayout.cshtml";
 }
 
 <form name="form2">
@@ -20,11 +21,8 @@
 
 @section Scripts{
     <script type="text/javascript">
-        //debugger
         $(document).ready(function () {
-            debugger
             $("#btn2").click(function () {
-                debugger
                 $.ajax({
                     url: "/Medecine/medByCategory",
                     type: "POST",

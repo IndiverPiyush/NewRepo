@@ -2,12 +2,13 @@
 
 @{
     ViewData["Title"] = "byName";
+    Layout = "~/Views/Home/_AfterLoginLayout.cshtml";
 }
 
 <form name="form2">
     <label>Search by Name: </label>
     @Html.DropDownListFor(x => x.MedicineId, new SelectList(Model.medicineList, "MedicineId", "MedicineName"), "<-select name->")
-    <input type="button" id="btn2" value="SEARCH" />
+    <input type="button" id="AKbtn2" value="SEARCH" />
     <hr />
     MEDICINE ID: <label id="l1"></label><br />
     MEDICINE NAME: <label id="l2"></label><br /><br />
@@ -22,7 +23,7 @@
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#btn2").click(function () {
+            $("#AKbtn2").click(function () {
                 $.ajax({
                     url: "/Medecine/medsByName",
                     type: "POST",

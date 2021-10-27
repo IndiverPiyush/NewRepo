@@ -4,9 +4,17 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+
+    <link href="~/css/form.css" rel="stylesheet" />
+    <link href="~/css/ProfileCard.css" rel="stylesheet" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
     <link href="~/css/IndexStyle.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css" />
 </head>
 <body>
     <section class="navigation">
@@ -38,9 +46,6 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#!">Portfolio</a>
-                    </li>
-                    <li>
                         <a href="#!">Category</a>
                         <ul class="navbar-dropdown">
                             <li>
@@ -58,16 +63,13 @@
                         <a href="#!">Contact</a>
                     </li>
                     <li>
-                        <a href="#!">Profile</a>
-                    </li>
-                    <li>
                         <a href="#!">Log Out</a>
                     </li>
                 </ul>
             </nav>
         </div>
     </section>
-    <div>
+    <div style="min-height: 100vh;">
         @RenderBody()
     </div>
 </body>
@@ -98,8 +100,14 @@
                 <div id="icon">
                     <li><i class="fab fa-free-code-camp"></i></li>
                 </div>
-        </div></a>
+            </a>
+        </div>
     </ul>
-    <p>&copy 2020-2021, *Your Brand*</p>
+    <p>&copy 2020-2021, Medicine Search</p>
 </footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+@await RenderSectionAsync("Styles", required: false)
 </html>
