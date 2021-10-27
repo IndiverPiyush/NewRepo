@@ -42,6 +42,9 @@ namespace MedicineSearchWebApp.Controllers
                     {
                         int uid = depdet.UserId;
                         HttpContext.Session.SetInt32("userid", uid);
+                        HttpContext.Session.SetString("username", depdet.UserName);
+                        HttpContext.Session.SetInt32("userwallet", (int) depdet.UserWalletbal);
+
                         return RedirectToAction(nameof(UserPage));
                     }
                     else
